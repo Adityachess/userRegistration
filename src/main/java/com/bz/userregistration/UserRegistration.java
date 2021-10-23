@@ -1,51 +1,91 @@
 package com.bz.userregistration;
 
-import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
-	static Scanner sc = new Scanner(System.in);
-
-	public void validFirstName() {
-		System.out.println("Enter your First Name : ");
-		String firstName = sc.nextLine();
-		System.out.println(Pattern.matches("[A-Z][a-z]{2,}", firstName));
+	/**
+	 * Created a method to validate first name
+	 */
+	public boolean firstName(String firstName) {
+		String regex = "^[A-Z]{1}[a-z]{2,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(firstName);
+		return matcher.matches();
 	}
 
-	public void validLastName() {
-		System.out.println("Enter your last Name : ");
-		String lastName = sc.nextLine();
-		System.out.println(Pattern.matches("[A-Z][a-z]{2,}", lastName));
+	/**
+	 * Created a method to validate last name
+	 */
+	public boolean lastName(String lastName) {
+		String regex = "^[A-Z]{1}[a-z]{2,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(lastName);
+		return matcher.matches();
 	}
 
-	public void validEmailId() {
-		System.out.println("Enter your Email ID : ");
-		String email = sc.nextLine();
-		System.out.println(
-				Pattern.matches("\"^([a][b][c])([\\\\.][a-z]+)[@][b][l][\\\\.][c][o]([\\\\.][i][n])\"", email));
-
+	/**
+	 * Created a method to validate E-mail
+	 */
+	public boolean email(String email) {
+		String regex = "^[a-z0-9]{3,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}?(.[a-z]{2,3}){0,1}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
 	}
 
-	public static void validMobileNumber() {
-		System.out.println("Enter your Mobile Number : ");
-		String mobileNumber = sc.nextLine();
-		System.out.println(Pattern.matches("(91\\s)?[789][0-9]{9}$", mobileNumber));
-
+	/**
+	 * Created a method to validate Mobile Number Format
+	 */
+	public boolean phoneNumber(String phoneNumber) {
+		String regex = "^[0-9]{2}\\s{1}[0-9]{10}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(phoneNumber);
+		return matcher.matches();
 	}
 
-	public static void validPassword() {
-		System.out.println("Enter your Password : ");
-		String password = sc.nextLine();
-		System.out.println(Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", password));
+	/**
+	 * Created a method to validate password with minimum 8 character
+	 */
+	public boolean password(String password) {
+		String regex = "^[0-9a-zA-Z!,@#$&*().]{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
+	}
+
+	/**
+	 * Created a method to validate password with atLeast one upper case
+	 */
+	public boolean passwordRule2(String password) {
+		String regex = "^(?=.*[A-Z]){1}(?=.*[a-z]).{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
+	}
+
+	/**
+	 * Created a method to validate password with atLeast one numeric value
+	 */
+	public boolean passwordRule3(String password) {
+		String regex = "^(?=.*[A-Z]){1}(?=.*[a-z])(?=.*[0-9]).{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
+	}
+
+	/**
+	 * Created a method to validate password with exactly one special character
+	 */
+	public boolean passwordRule4(String password) {
+		String regex = "^(?=.*[A-Z]){1}(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%!]).{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
 	}
 
 	public static void main(String[] args) {
-		UserRegistration object = new UserRegistration();
-		object.validFirstName();
-		object.validLastName();
-		object.validEmailId();
-		object.validMobileNumber();
-		object.validPassword();
 
 	}
+
 }
