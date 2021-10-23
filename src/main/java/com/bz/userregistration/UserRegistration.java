@@ -36,7 +36,7 @@ public class UserRegistration {
 	public static void validPassword() {
 		System.out.println("Enter your Password : ");
 		String password = sc.nextLine();
-		System.out.println(Pattern.matches("[a-zA-Z]{8,}", password));
+		System.out.println(Pattern.matches("[a-zA-Z]{8,}", password));// password at least one char
 	}
 
 	public static void main(String[] args) {
