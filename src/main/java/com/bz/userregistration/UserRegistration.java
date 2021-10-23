@@ -33,11 +33,19 @@ public class UserRegistration {
 
 	}
 
+	public static void validPassword() {
+		System.out.println("Enter your Password : ");
+		String password = sc.nextLine();
+		System.out.println(Pattern.matches("[a-zA-Z]{8,}", password));
+	}
+
 	public static void main(String[] args) {
 		UserRegistration object = new UserRegistration();
 		object.validFirstName();
 		object.validLastName();
 		object.validEmailId();
 		object.validMobileNumber();
+		object.validPassword();
+
 	}
 }
